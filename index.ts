@@ -36,7 +36,7 @@ const properties : {
         postcode: number;
         country: string;
     };
-    contact: string;
+    contact: [ number, string ];
     isAvailable: boolean;
 }[]=[
     {   img: '/images/colombia-property.jpg',
@@ -48,7 +48,7 @@ const properties : {
             postcode: 24363 ,
             country:'Colombia' ,
         },
-        contact:'marywinkle@gmail.com' ,
+        contact:[ +112343823978921, 'marywinkle@gmail.com'] ,
         isAvailable:true ,
     },
     {
@@ -61,7 +61,7 @@ const properties : {
             postcode: 343903,
             country: 'Poland'
         },
-        contact: 'garydavis@hotmail.com',
+        contact: [ +1298239028490830 ,'garydavis@hotmail.com'],
         isAvailable: false 
     },
     {
@@ -74,7 +74,7 @@ const properties : {
             postcode: 35433,
             country: 'United Kingdom',
         },
-        contact: 'andyluger@aol.com',
+        contact: [+34829374892553 ,'andyluger@aol.com'],
         isAvailable: true 
     }
     
@@ -108,7 +108,14 @@ const you : {
     isReturning: true,
 }
 
+const footer = document.querySelector('.footer')
+let currentLocation :[string, string, number]
+ = ['Johannesburg', '13:21', 26]
+
+
+footer.innerHTML = currentLocation[0] + ' ' + currentLocation[1] + ' ' + currentLocation[2] + '°'
 
 //calling functions
 showTotalReviews(reviews.length, reviews[0].name, reviews[0].loyaltyUser)
 populateUser(you.isReturning, you.firstName)
+
