@@ -1,5 +1,7 @@
 
 const reviewTotalDisplay = document.querySelector('#reviews')
+const userNameDisplay = document.querySelector('#user')
+const returningUserDisplay = document.querySelector('#returning-user')
 
 const reviews = [
     {
@@ -24,7 +26,7 @@ const reviews = [
 
 function showTotalReviews (value : number, reviewer : string, star : boolean){
     if(!reviewTotalDisplay){
-        return console.error('container not found')
+        return console.error('element not found')
     }
     
     reviewTotalDisplay.innerHTML = `review total ${value.toString()} | last reviewed by ${reviewer}`
@@ -34,3 +36,23 @@ function showTotalReviews (value : number, reviewer : string, star : boolean){
 }
 
 showTotalReviews(reviews.length, reviews[0].name, reviews[0].loyaltyUser)
+
+ 
+const you = {
+    userName: 'Bobby',
+    isReturning: true,
+}
+
+
+function populateUser(isReturning : boolean, userName : string ) {
+    if(!returningUserDisplay || !userNameDisplay){
+        return console.error('element not found')
+    }
+    
+    if (isReturning){
+        returningUserDisplay.innerHTML = 'back'
+    }
+    userNameDisplay.innerHTML = userName
+}
+
+populateUser(you.isReturning, you.userName)
