@@ -59,7 +59,7 @@ const properties : Property[]=[
         location: {
             firstLine: 'flat 15',
             city: 'London',
-            postcode: 35433,
+            postcode: 'SW4 5XW',
             country: 'United Kingdom',
         },
         contact: [+34829374892553 ,'andyluger@aol.com'],
