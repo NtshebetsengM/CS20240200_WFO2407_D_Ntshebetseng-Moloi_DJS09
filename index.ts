@@ -1,6 +1,6 @@
 import { populateUser, showTotalReviews } from "./utils";
 import { Permissions, LoyaltyUser } from "./enums";
-
+import { Country, Price } from "./types";
 const reviews :any[] = [
     {
         name: 'Sheia',
@@ -23,15 +23,17 @@ const reviews :any[] = [
     },
 ]
 
+
+
 const properties : {
     img: string;
     title: string;
-    price: number;
+    price: Price;
     location: {
         firstLine: string;
         city: string;
         postcode: number;
-        country: string;
+        country: Country;
     };
     contact: [ number, string ];
     isAvailable: boolean;
@@ -51,7 +53,7 @@ const properties : {
     {
         img: '/images/poland-property.jpg',
         title: 'Polish Cottage',
-        price: 34,
+        price: 30,
         location: {
             firstLine: 'no 23',
             city: 'Gdansk',
@@ -64,7 +66,7 @@ const properties : {
     {
         img: '/images/london-property.jpg',
         title: 'London Flat',
-        price: 23,
+        price: 25,
         location: {
             firstLine: 'flat 15',
             city: 'London',
