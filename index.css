@@ -39,6 +39,9 @@ body {
     padding: 10px;
     box-shadow: rgb(0 0 0 / 12%) 0 1px 8px;
 }
+.card img{
+    width: 100%;
+}
 .review-card {
     padding: 10px;
 }
@@ -62,4 +65,17 @@ body {
     text-align: center;
     padding: 30px;
     color: white;
+}
+
+
+button{
+    background-color: rgb(3, 174, 43);
+    color: white;
+    border-radius: 5px;
+    padding: 10px;
+    transition: all linear 200ms;
+}
+
+button:hover{
+    background-color: rgb(234, 223, 20);
 }
