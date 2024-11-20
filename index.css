@@ -39,6 +39,20 @@ body {
     padding: 10px;
     box-shadow: rgb(0 0 0 / 12%) 0 1px 8px;
 }
+.review-card {
+    padding: 10px;
+}
+
+.reviews {
+    display: flex;
+    padding: 10px;
+}
+
+.break {
+    height: 1px;
+    width: 90%;
+    background-color: coral;
+}
 
 .footer {
     width: 100%;

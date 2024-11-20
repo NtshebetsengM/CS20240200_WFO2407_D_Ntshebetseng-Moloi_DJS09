@@ -1,4 +1,4 @@
-import { populateUser, showTotalReviews } from "./utils";
+import { populateUser, showTotalReviews, getTopTwoReviews } from "./utils";
 import { Permissions, LoyaltyUser } from "./enums";
 import { Country, Price } from "./types";
 const reviews :any[] = [
@@ -136,3 +136,24 @@ for (let i = 0; i < properties.length; i++) {
 showTotalReviews(reviews.length, reviews[0].name, reviews[0].loyaltyUser)
 populateUser(you.isReturning, you.firstName)
 
+
+const reviewContainer = document.querySelector('.reviews')
+const container = document.querySelector('.container')
+const button = document.querySelector('button')
+
+let count = 0
+function addReviews(array: {name:string; stars: number; LoyaltyUser:LoyaltyUser; date: string}[]) : void {
+    if (!count ) {
+        count++
+        const topTwo = getTopTwoReviews(array)
+        for (let i = 0; i < topTwo.length; i++) {
+            const card = document.createElement('div')
+            card.classList.add('review-card')
+            card.innerHTML = topTwo[i].stars + ' stars from ' + topTwo[i].name
+            reviewContainer.appendChild(card)
+        }
+        container.removeChild(button) 
+    }
+}
+
+button.addEventListener('click', () => addReviews(reviews))

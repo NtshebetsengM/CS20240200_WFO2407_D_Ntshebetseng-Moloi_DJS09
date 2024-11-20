@@ -34,3 +34,17 @@ export function populateUser(isReturning : boolean, userName : string ) {
     }
     userNameDisplay.innerHTML = userName
 }
+
+
+export function getTopTwoReviews(reviews : {
+    name:string; 
+    stars: number; 
+    LoyaltyUser:LoyaltyUser; 
+    date: string}[]) : {
+        name:string; 
+        stars: number; 
+        LoyaltyUser:LoyaltyUser; 
+        date: string}[]  {
+ const sortedReviews = reviews.sort((a, b) => b.stars - a.stars)
+ return sortedReviews.slice(0,2)
+}
