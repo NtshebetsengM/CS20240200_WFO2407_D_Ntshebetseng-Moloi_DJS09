@@ -1,12 +1,7 @@
 import { populateUser, showTotalReviews } from "./utils";
 import { Permissions, LoyaltyUser } from "./enums";
 
-const reviews :{
-    name: string;
-    stars: number;
-    loyaltyUser:LoyaltyUser;
-    date: string;
-}[] = [
+const reviews :any[] = [
     {
         name: 'Sheia',
         stars: 5,
@@ -23,7 +18,8 @@ const reviews :{
         name: 'Omar',
         stars: 4,
         loyaltyUser: LoyaltyUser.SILVER_USER,
-        date: '27-03-2021'
+        date: '27-03-2021',
+        description: 'Great hosts, location was a bit further than said.'
     },
 ]
 
@@ -110,6 +106,29 @@ let currentLocation :[string, string, number]
 
 
 footer.innerHTML = `${currentLocation[0]} ${currentLocation[1]} ${currentLocation[2]}°`
+
+let authorityStatus : any
+
+//isLoggedIn = true
+
+function showDetails(authorityStatus: boolean | Permissions, element : HTMLDivElement, price: number) {
+   if (authorityStatus) {
+       const priceDisplay = document.createElement('div')
+       priceDisplay.innerHTML = price.toString() + '/night'
+       element.appendChild(priceDisplay)
+   }
+}
+
+for (let i = 0; i < properties.length; i++) {
+    const card = document.createElement('div')
+    card.classList.add('card')
+    card.innerHTML = properties[i].title
+    const image = document.createElement('img')
+    image.setAttribute('src', properties[i].img)
+    card.appendChild(image)
+    propertyContainer.appendChild(card)
+    showDetails(you.permissions, card, properties[i].price)
+}
 
 //calling functions
 showTotalReviews(reviews.length, reviews[0].name, reviews[0].loyaltyUser)
