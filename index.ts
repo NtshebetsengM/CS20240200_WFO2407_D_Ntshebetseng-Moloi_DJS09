@@ -22,12 +22,15 @@ const reviews = [
     },
 ]
 
-function showTotalReviews (value : number, name : string){
+function showTotalReviews (value : number, reviewer : string, star : boolean){
     if(!reviewTotalDisplay){
-        return console.log('container not found')
+        return console.error('container not found')
     }
     
-    reviewTotalDisplay.innerHTML = `review total ${value.toString()} by ${name}`
+    reviewTotalDisplay.innerHTML = `review total ${value.toString()} | last reviewed by ${reviewer}`
+    if(star){
+        reviewTotalDisplay.innerHTML += ' ⭐'
+    }
 }
 
-showTotalReviews(reviews.length, reviews[0].name)
+showTotalReviews(reviews.length, reviews[0].name, reviews[0].loyaltyUser)
