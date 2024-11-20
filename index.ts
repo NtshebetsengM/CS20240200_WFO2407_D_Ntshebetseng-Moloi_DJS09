@@ -1,7 +1,8 @@
 import { populateUser, showTotalReviews, getTopTwoReviews } from "./utils";
 import { Permissions, LoyaltyUser } from "./enums";
-import { Country, Price } from "./types";
-const reviews :any[] = [
+import { Property, Review } from "./interfaces";
+
+const reviews :Review[] | any[] = [
     {
         name: 'Sheia',
         stars: 5,
@@ -25,19 +26,7 @@ const reviews :any[] = [
 
 
 
-const properties : {
-    img: string;
-    title: string;
-    price: Price;
-    location: {
-        firstLine: string;
-        city: string;
-        postcode: number;
-        country: Country;
-    };
-    contact: [ number, string ];
-    isAvailable: boolean;
-}[]=[
+const properties : Property[]=[
     {   img: '/images/colombia-property.jpg',
         title: 'Colombian Shack',
         price: 45 ,
@@ -142,7 +131,7 @@ const container = document.querySelector('.container')
 const button = document.querySelector('button')
 
 let count = 0
-function addReviews(array: {name:string; stars: number; LoyaltyUser:LoyaltyUser; date: string}[]) : void {
+function addReviews(array: Review[]) : void {
     if (!count ) {
         count++
         const topTwo = getTopTwoReviews(array)

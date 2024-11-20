@@ -1,4 +1,5 @@
 import { LoyaltyUser } from "./enums"
+import { Review } from "./interfaces"
 
 const reviewTotalDisplay = document.querySelector('#reviews')
 const userNameDisplay = document.querySelector('#user')
@@ -36,15 +37,7 @@ export function populateUser(isReturning : boolean, userName : string ) {
 }
 
 
-export function getTopTwoReviews(reviews : {
-    name:string; 
-    stars: number; 
-    LoyaltyUser:LoyaltyUser; 
-    date: string}[]) : {
-        name:string; 
-        stars: number; 
-        LoyaltyUser:LoyaltyUser; 
-        date: string}[]  {
+export function getTopTwoReviews(reviews : Review[]) : Review[]  {
  const sortedReviews = reviews.sort((a, b) => b.stars - a.stars)
  return sortedReviews.slice(0,2)
 }
