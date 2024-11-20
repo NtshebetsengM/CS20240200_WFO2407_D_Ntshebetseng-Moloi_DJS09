@@ -1,27 +1,28 @@
 import { populateUser, showTotalReviews } from "./utils";
+import { Permissions, LoyaltyUser } from "./enums";
 
 const reviews :{
     name: string;
     stars: number;
-    loyaltyUser: boolean;
+    loyaltyUser:LoyaltyUser;
     date: string;
 }[] = [
     {
         name: 'Sheia',
         stars: 5,
-        loyaltyUser: true,
+        loyaltyUser: LoyaltyUser.GOLD_USER,
         date: '01-04-2021'
     },
     {
         name: 'Andrzej',
         stars: 3,
-        loyaltyUser: false,
+        loyaltyUser: LoyaltyUser.BRONZE_USER,
         date: '28-03-2021'
     },
     {
         name: 'Omar',
         stars: 4,
-        loyaltyUser: true,
+        loyaltyUser: LoyaltyUser.SILVER_USER,
         date: '27-03-2021'
     },
 ]
@@ -94,18 +95,13 @@ for (let i = 0; i < properties.length; i++) {
 }
 
  
-const you : {
-    firstName: string;
-    lastName: string;
-    age: number;
-    stayedAt: string[];
-    isReturning: boolean;
-} = {
+const you = {
     firstName: 'Bobby',
     lastName: 'Brown',
     age: 23,
     stayedAt: ['florida-home', 'oman-flat', 'tokyo-bungalow'],
     isReturning: true,
+    permissions: Permissions.ADMIN,
 }
 
 const footer = document.querySelector('.footer')
@@ -113,7 +109,7 @@ let currentLocation :[string, string, number]
  = ['Johannesburg', '13:21', 26]
 
 
-footer.innerHTML = currentLocation[0] + ' ' + currentLocation[1] + ' ' + currentLocation[2] + '°'
+footer.innerHTML = `${currentLocation[0]} ${currentLocation[1]} ${currentLocation[2]}°`
 
 //calling functions
 showTotalReviews(reviews.length, reviews[0].name, reviews[0].loyaltyUser)

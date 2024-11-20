@@ -1,14 +1,18 @@
+import { LoyaltyUser } from "./enums"
+
 const reviewTotalDisplay = document.querySelector('#reviews')
 const userNameDisplay = document.querySelector('#user')
 const returningUserDisplay = document.querySelector('#returning-user')
 
-export function showTotalReviews (value : number, reviewer : string, star : boolean){
+
+
+export function showTotalReviews (value : number, reviewer : string, loyalty : LoyaltyUser){
     if(!reviewTotalDisplay){
         return console.error('element not found')
     }
     
     reviewTotalDisplay.innerHTML = `review total ${value.toString()} | last reviewed by ${reviewer}`
-    if(star){
+    if(LoyaltyUser.GOLD_USER){
         reviewTotalDisplay.innerHTML += ' ⭐'
     }
 }
