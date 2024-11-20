@@ -1,7 +1,4 @@
-
-const reviewTotalDisplay = document.querySelector('#reviews')
-const userNameDisplay = document.querySelector('#user')
-const returningUserDisplay = document.querySelector('#returning-user')
+import { populateUser, showTotalReviews } from "./utils";
 
 const reviews :{
     name: string;
@@ -29,16 +26,61 @@ const reviews :{
     },
 ]
 
-function showTotalReviews (value : number, reviewer : string, star : boolean){
-    if(!reviewTotalDisplay){
-        return console.error('element not found')
+const properties : {
+    img: string;
+    title: string;
+    price: number;
+    location: {
+        firstLine: string;
+        city: string;
+        postcode: number;
+        country: string;
+    };
+    contact: string;
+    isAvailable: boolean;
+}[]=[
+    {   img: '',
+        title: 'Colombian Shack',
+        price: 45 ,
+        location: {
+            firstLine: 'shack 37',
+            city:'Bogota' ,
+            postcode: 24363 ,
+            country:'Colombia' ,
+        },
+        contact:'marywinkle@gmail.com' ,
+        isAvailable:true ,
+    },
+    {
+        img: '',
+        title: 'Polish Cottage',
+        price: 34,
+        location: {
+            firstLine: 'no 23',
+            city: 'Gdansk',
+            postcode: 343903,
+            country: 'Poland'
+        },
+        contact: 'garydavis@hotmail.com',
+        isAvailable: false 
+    },
+    {
+        img: '',
+        title: 'London Flat',
+        price: 23,
+        location: {
+            firstLine: 'flat 15',
+            city: 'London',
+            postcode: 35433,
+            country: 'United Kingdom',
+        },
+        contact: 'andyluger@aol.com',
+        isAvailable: true 
     }
     
-    reviewTotalDisplay.innerHTML = `review total ${value.toString()} | last reviewed by ${reviewer}`
-    if(star){
-        reviewTotalDisplay.innerHTML += ' ⭐'
-    }
-}
+]
+
+
 
 showTotalReviews(reviews.length, reviews[0].name, reviews[0].loyaltyUser)
 
@@ -57,18 +99,5 @@ const you : {
     isReturning: true,
 }
 
-
-
-
-function populateUser(isReturning : boolean, userName : string ) {
-    if(!returningUserDisplay || !userNameDisplay){
-        return console.error('element not found')
-    }
-    
-    if (isReturning){
-        returningUserDisplay.innerHTML = 'back'
-    }
-    userNameDisplay.innerHTML = userName
-}
 
 populateUser(you.isReturning, you.firstName)
