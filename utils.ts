@@ -11,10 +11,17 @@ export function showTotalReviews (value : number, reviewer : string, loyalty : L
         return console.error('element not found')
     }
     
-    reviewTotalDisplay.innerHTML = `review total ${value.toString()} | last reviewed by ${reviewer}`
-    if(LoyaltyUser.GOLD_USER){
+    reviewTotalDisplay.innerHTML = `${value.toString()} Review${makeMultiple(value)} | last reviewed by ${reviewer}`
+    if(loyalty === LoyaltyUser.GOLD_USER){
         reviewTotalDisplay.innerHTML += ' ⭐'
     }
+}
+
+
+export function makeMultiple(value: number) : string {
+    if (value > 1 || value == 0 ) {
+        return 's'
+    } else return ''
 }
 
 export function populateUser(isReturning : boolean, userName : string ) {
