@@ -1,6 +1,8 @@
-import { populateUser, showTotalReviews, getTopTwoReviews } from "./utils";
-import { Permissions, LoyaltyUser } from "./enums";
+
+import MainProperty from "./classes";
+import { LoyaltyUser, Permissions } from "./enums";
 import { Property, Review } from "./interfaces";
+import { getTopTwoReviews, populateUser, showTotalReviews } from "./utils";
 
 const reviews :Review[] | any[] = [
     {
@@ -91,7 +93,12 @@ for (let i = 0; i < properties.length; i++) {
     const image = document.createElement('img')
     image.setAttribute('src', properties[i].img)
     card.appendChild(image)
-    propertyContainer.appendChild(card)
+    if(!propertyContainer){
+        console.error('element not found')
+    }else {
+        propertyContainer.appendChild(card)
+    }
+    
 }
 
  
@@ -108,8 +115,11 @@ const footer = document.querySelector('.footer')
 let currentLocation :[string, string, number]
  = ['Johannesburg', '13:21', 26]
 
+if(!footer){
+    console.error('element not found')
+} else{
+    footer.innerHTML = `${currentLocation[0]} ${currentLocation[1]} ${currentLocation[2]}°`}
 
-footer.innerHTML = `${currentLocation[0]} ${currentLocation[1]} ${currentLocation[2]}°`
 
 let authorityStatus : any
 
@@ -130,7 +140,13 @@ for (let i = 0; i < properties.length; i++) {
     const image = document.createElement('img')
     image.setAttribute('src', properties[i].img)
     card.appendChild(image)
-    propertyContainer.appendChild(card)
+
+    if(!propertyContainer){
+        console.error("element not found")
+    }else{
+        propertyContainer.appendChild(card)
+    }
+    
     showDetails(you.permissions, card, properties[i].price)
 }
 
@@ -145,6 +161,10 @@ const button = document.querySelector('button')
 
 let count = 0
 function addReviews(array: Review[]) : void {
+    if(!container || !reviewContainer || !button){
+        return console.error("element not found")
+    }
+    
     if (!count ) {
         count++
         const topTwo = getTopTwoReviews(array)
@@ -157,20 +177,15 @@ function addReviews(array: Review[]) : void {
         container.removeChild(button) 
     }
 }
-
-button.addEventListener('click', () => addReviews(reviews))
-
-
-class MainProperty{
-    reviews: Review[]
-    src: string
-    title: string
-    constructor( src: string,title: string, reviews: Review[] ){
-        this.src = src
-        this.title = title
-        this.reviews = reviews  
-    }
+if(!button){
+    console.error('element not found')
+}else{
+    button.addEventListener('click', () => addReviews(reviews))
 }
+
+
+
+
 
 let yourMainProperty = new MainProperty(
     'images/italian-property.jpg', 
@@ -185,4 +200,9 @@ let yourMainProperty = new MainProperty(
 const mainImageContainer = document.querySelector('.main-image')
 const image = document.createElement('img')
 image.setAttribute('src', yourMainProperty.src)
-mainImageContainer.appendChild(image)
+if(!mainImageContainer){
+    console.error("element not found")
+}else{
+    mainImageContainer.appendChild(image)
+}
+
