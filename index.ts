@@ -39,7 +39,7 @@ const properties : {
     contact: string;
     isAvailable: boolean;
 }[]=[
-    {   img: '',
+    {   img: '/images/colombia-property.jpg',
         title: 'Colombian Shack',
         price: 45 ,
         location: {
@@ -52,7 +52,7 @@ const properties : {
         isAvailable:true ,
     },
     {
-        img: '',
+        img: '/images/poland-property.jpg',
         title: 'Polish Cottage',
         price: 34,
         location: {
@@ -65,7 +65,7 @@ const properties : {
         isAvailable: false 
     },
     {
-        img: '',
+        img: '/images/london-property.jpg',
         title: 'London Flat',
         price: 23,
         location: {
@@ -79,10 +79,19 @@ const properties : {
     }
     
 ]
+const propertyContainer = document.querySelector('.properties')
 
 
 
-showTotalReviews(reviews.length, reviews[0].name, reviews[0].loyaltyUser)
+for (let i = 0; i < properties.length; i++) {
+    const card = document.createElement('div')
+    card.classList.add('card')
+    card.innerHTML = properties[i].title
+    const image = document.createElement('img')
+    image.setAttribute('src', properties[i].img)
+    card.appendChild(image)
+    propertyContainer.appendChild(card)
+}
 
  
 const you : {
@@ -100,4 +109,6 @@ const you : {
 }
 
 
+//calling functions
+showTotalReviews(reviews.length, reviews[0].name, reviews[0].loyaltyUser)
 populateUser(you.isReturning, you.firstName)
